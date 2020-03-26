@@ -4,6 +4,10 @@ variable "datastore_name" {}
 variable "network_name" {}
 variable "virtual_machine_name" {}
 
+variable "cpu_count" {
+   default = 2
+}
+
 data "vsphere_datacenter" "dc" {
   name = var.datacenter_name
 }
@@ -27,7 +31,7 @@ resource "vsphere_virtual_machine" "vm" {
   name             = var.virtual_machine_name
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
-  num_cpus         = 2
+  num_cpus         = var.cpu_count
   memory           = 1024
   guest_id         = "other3xLinux64Guest"
 
