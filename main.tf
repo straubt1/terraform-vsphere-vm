@@ -2,7 +2,6 @@ variable "datacenter_name" {}
 variable "cluster_name" {}
 variable "datastore_name" {}
 variable "network_name" {}
-variable "datacenter_name" {}
 variable "virtual_machine_name" {}
 
 data "vsphere_datacenter" "dc" {
